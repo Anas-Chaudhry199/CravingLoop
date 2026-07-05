@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config src/index.js",
     "format": "prettier --write .",
+    "start": "node src/index.js",
     "test": "jest"
   },
   "devDependencies": {

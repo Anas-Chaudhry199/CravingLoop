@@ -96,13 +96,13 @@ const signIn = asyncHandler(async (req, res) => {
     const accessTokenOptions = {
         httpOnly: true,
         secure: true,
-        sameSite: none,
+        sameSite: "none",
         maxAge: ms(process.env.ACCESS_TOKEN_EXPIRY)
     };
     const refreshTokenOptions = {
         httpOnly: true,
         secure: true,
-        sameSite: none,
+        sameSite: "none",
 
         maxAge: ms(process.env.REFRESH_TOKEN_EXPIRY)
     };

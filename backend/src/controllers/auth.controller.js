@@ -95,14 +95,14 @@ const signIn = asyncHandler(async (req, res) => {
 
     const accessTokenOptions = {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+        secure: true,
+        sameSite: none,
         maxAge: ms(process.env.ACCESS_TOKEN_EXPIRY)
     };
     const refreshTokenOptions = {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+        secure: true,
+        sameSite: none,
 
         maxAge: ms(process.env.REFRESH_TOKEN_EXPIRY)
     };
@@ -129,8 +129,8 @@ const signOut = asyncHandler(async (req, res) => {
 
     const cookieOptions = {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax"
+        secure: true,
+        sameSite: "none"
     };
 
     return res
@@ -147,7 +147,7 @@ const googleAuth = asyncHandler(async (req, res) => {
     if (!email || !fullName) {
         throw new ApiError(400, "Name and Email are required from Google Auth");
     }
-    if(!mobile || String(mobile).trim() === ""){
+    if (!mobile || String(mobile).trim() === "") {
         throw new ApiError(400, "Mobile Number is requied")
     }
 
